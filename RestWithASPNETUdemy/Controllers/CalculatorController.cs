@@ -48,6 +48,17 @@ namespace RestWithASPNETUdemy.Controllers
             return BadRequest("Invalid input");
         }
 
+        [HttpGet("division/{firstNumber}/{secondNumber}")]
+        public IActionResult Division(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var division = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+                return Ok(division.ToString());
+            }
+            return BadRequest("Invalid input");
+        }
+
 
 
 
