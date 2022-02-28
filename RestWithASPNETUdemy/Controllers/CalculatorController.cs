@@ -70,7 +70,16 @@ namespace RestWithASPNETUdemy.Controllers
             return BadRequest("Invalid input");
         }
 
-
+        [HttpGet("square-root/{firstNumber}")]
+        public IActionResult SquareRoot(string firstNumber)
+        {
+            if (IsNumeric(firstNumber))
+            {
+                var squareRoot = Math.Sqrt((double)ConvertToDecimal(firstNumber));
+                return Ok(squareRoot.ToString());
+            }
+            return BadRequest("Invalid input");
+        }
 
         private decimal ConvertToDecimal(string strNumber)
         {
