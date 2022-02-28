@@ -15,6 +15,18 @@ namespace RestWithASPNETUdemy.Controllers
             _logger = logger;
         }
 
+        private decimal ConvertToDecimal(string strNumber)
+        {
+            decimal decimalValue;
+
+            if (decimal.TryParse(strNumber, out decimalValue))
+            {
+                return decimalValue;
+            }
+
+            return 0;
+        }
+
         private bool IsNumeric(string strNumber)
         {
             double number;
