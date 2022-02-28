@@ -37,6 +37,19 @@ namespace RestWithASPNETUdemy.Controllers
             return BadRequest("Invalid input");
         }
 
+        [HttpGet("multiply/{firstNumber}/{secondNumber}")]
+        public IActionResult Multiply(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var multiply = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+                return Ok(multiply.ToString());
+            }
+            return BadRequest("Invalid input");
+        }
+
+
+
 
         private decimal ConvertToDecimal(string strNumber)
         {
