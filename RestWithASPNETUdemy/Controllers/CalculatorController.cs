@@ -26,6 +26,18 @@ namespace RestWithASPNETUdemy.Controllers
             return BadRequest("Invalid input");
         }
 
+        [HttpGet("subtraction/{firstNumber}/{secondNumber}")]
+        public IActionResult Subtration(string firstNumber, string secondNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondNumber))
+            {
+                var subtraction = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+                return Ok(subtraction.ToString());
+            }
+            return BadRequest("Invalid input");
+        }
+
+
         private decimal ConvertToDecimal(string strNumber)
         {
             decimal decimalValue;
